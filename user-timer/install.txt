@@ -1,0 +1,26 @@
+# Simple user systemd timer
+
+# On login:
+#	Process started:
+#		systemd --user
+#	Directory created:
+#		.local/share/systemd
+
+# Files:
+#	rich.service
+#	rich.sh
+#	rich.timer
+
+mkdir .config/systemd/user -p
+cp rich.service rich.timer .config/systemd/user/
+systemctl --user enable rich.timer
+
+# Directory created:
+#	.config/systemd/user/default.target.wants
+
+systemctl --user start rich.timer
+systemctl --user start rich.service
+
+# File created:
+#	date.txt
+

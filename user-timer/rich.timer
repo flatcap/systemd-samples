@@ -1,0 +1,9 @@
+[Unit]
+Description=Rich's test timer
+
+[Timer]
+OnUnitActiveSec=1m
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=Rich's test service
+
+[Service]
+Type=oneshot
+ExecStart=/home/flatcap/rich.sh
+
+[Install]
+WantedBy=default.target
+
