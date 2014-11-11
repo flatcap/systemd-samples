@@ -1,0 +1,11 @@
+# Simple user systemd timer
+
+# Files:
+#	clean-vim-tmpfiles.service
+#	clean-vim-tmpfiles.timer
+
+mkdir .config/systemd/user -p
+cp clean-vim-tmpfiles.service clean-vim-tmpfiles.timer .config/systemd/user/
+systemctl --user enable clean-vim-tmpfiles.timer
+systemctl --user start clean-vim-tmpfiles.timer
+

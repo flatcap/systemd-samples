@@ -1,0 +1,10 @@
+[Unit]
+Description=Clean up Vim Temporary Files timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=4h
+
+[Install]
+WantedBy=default.target
+Also=clean-vim-tmpfiles.service

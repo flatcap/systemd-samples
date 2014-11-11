@@ -1,0 +1,14 @@
+[Unit]
+Description=Clean up Vim Temporary Files
+ConditionDirectoryNotEmpty=|%h/.vim/backup
+ConditionDirectoryNotEmpty=|%h/.vim/swap
+ConditionDirectoryNotEmpty=|%h/.vim/undo
+ConditionDirectoryNotEmpty=|%h/.vim/view
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '/usr/bin/find %h/.vim/{backup,swap,undo,view} -type f -mtime +7 -delete'
+
+[Install]
+WantedBy=default.target
+

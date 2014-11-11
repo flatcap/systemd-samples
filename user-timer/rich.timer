@@ -2,7 +2,7 @@
 Description=Rich's test timer
 
 [Timer]
-OnUnitActiveSec=1m
+OnUnitActiveSec=1min
 
 [Install]
 WantedBy=default.target
