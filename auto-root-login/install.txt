@@ -1,0 +1,20 @@
+# Automatically login root on a VT
+
+# Files:
+#	auto-root-login@.service
+
+# This file is a copy of getty@.service with two changes
+#	[Unit]
+#	Description=Automatic root login on %I
+#
+#	[Service]
+#	ExecStart=-/sbin/agetty --login-pause --autologin root %I
+
+cp auto-root-login@.service /usr/lib/systemd/system/
+restorecon -vvR /usr/lib/systemd/system
+
+ln -s '/usr/lib/systemd/system/auto-root-login@.service' '/etc/systemd/system/getty.target.wants/autologin@tty2.service'
+
+systemctl stop getty@tty2
+systemctl start auto-root-login@tty2
+
