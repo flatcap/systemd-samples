@@ -1,0 +1,12 @@
+# Automatically start a user's systemd session
+
+# /usr/lib/systemd/system/user@.service
+# This file doesn't have an [Install] section
+# because it's not normally meant to be installed.
+
+# To install
+ln -s '/usr/lib/systemd/system/user@.service' '/etc/systemd/system/multi-user.target.wants/user@1000.service'
+
+# To uninstall
+rm '/etc/systemd/system/multi-user.target.wants/user@1000.service'
+

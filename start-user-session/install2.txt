@@ -1,0 +1,18 @@
+# Automatically start a user's systemd session
+
+# /usr/lib/systemd/system/user@.service
+# This file doesn't have an [Install] section
+# because it's not normally meant to be installed.
+
+cd /usr/lib/systemd/system
+cp user@.service user@1000.service
+
+echo "[Install]"			>> user@1000.service
+echo "WantedBy=multi-user.target"	>> user@1000.service
+
+systemctl enable user@1000.service
+systemctl start user@1000.service
+
+# Process started (as flatcap):
+#	/usr/lib/systemd/systemd --user
+
