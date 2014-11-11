@@ -1,0 +1,9 @@
+[Unit]
+Description=Kindle is mounted
+
+[Path]
+PathExists=/home/flatcap/KINDLE
+
+[Install]
+WantedBy=paths.target
+

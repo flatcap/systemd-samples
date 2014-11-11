@@ -1,0 +1,12 @@
+work in progress
+
+kindle-mounted.path
+kindle-mounted.service
+
+these will create the link
+but I can't get the link to go away after the path becomes inactive
+
+kindle-off.service
+
+an attempt to workaround the problem
+

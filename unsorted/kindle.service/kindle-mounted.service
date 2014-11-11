@@ -1,0 +1,14 @@
+[Unit]
+Description=Create Kindle Link
+ConditionPathIsDirectory=/home/flatcap
+ConditionPathExists=/home/flatcap/KINDLE
+Requires=kindle-mounted.path
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/flatcap
+ExecStart=/usr/bin/ln -s /home/flatcap/KINDLE klink
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=Magic DNS service
+
+[Service]
+ExecStart=/home/flatcap/magic-dns.pl
+Restart=no
+
+[Install]
+WantedBy=default.target
+

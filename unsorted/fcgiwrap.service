@@ -1,0 +1,11 @@
+[Unit]
+Description=Simple CGI Server
+After=nss-user-lookup.target
+
+[Service]
+ExecStart=/usr/sbin/fcgiwrap -s tcp:127.0.0.1:9000
+User=gitolite3
+Group=gitolite3
+
+[Install]
+WantedBy=multi-user.target
