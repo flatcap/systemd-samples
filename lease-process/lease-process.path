@@ -1,0 +1,10 @@
+[Unit]
+Description=Virtual Machine DNS Leases path
+
+[Path]
+PathModified=/var/lib/libvirt/dnsmasq/default.leases
+
+[Install]
+WantedBy=paths.target
+Also=lease-process.service
+

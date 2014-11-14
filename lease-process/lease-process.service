@@ -1,0 +1,14 @@
+[Unit]
+Description=Virtual Machine DNS Leases
+ConditionPathIsDirectory=/var/lib/libvirt/dnsmasq
+ConditionPathExists=/var/lib/libvirt/dnsmasq/default.leases
+Requires=lease-process.path
+
+[Service]
+Type=oneshot
+WorkingDirectory=/var/lib/libvirt/dnsmasq
+ExecStart=/usr/sbin/lease-process
+
+[Install]
+WantedBy=default.target
+
