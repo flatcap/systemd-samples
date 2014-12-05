@@ -1,16 +1,18 @@
 #!/bin/bash
 
 DIR="/var/lib/libvirt/dnsmasq"
-LEASES="$DIR/default.leases"
 HOSTS="$DIR/hosts"
+XML="/etc/libvirt/qemu/*.xml"
 
 touch "$HOSTS"
 chmod 644 "$HOSTS"
 restorecon -v "$HOSTS"
 
-cat "$LEASES" | while read TTL MAC IP NAME CLIENT; do
+cat "$DIR"/*.leases | while read TTL MAC IP NAME CLIENT; do
 
-	QEMU="$(grep -l "<mac address='$MAC'/>" /etc/libvirt/qemu/*.xml)"
+	QEMU="$(grep -l "<mac address='$MAC'/>" $XML)"
+	[ -z "$QEMU" ] && continue
+
 	NAME=$(grep "<name>" "$QEMU" | sed 's/[ \t]*<[^>]\+>[ \t]*//g')
 
 # 	echo "TTL    = $TTL"

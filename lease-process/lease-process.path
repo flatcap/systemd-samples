@@ -4,6 +4,7 @@ After=libvirtd.service
 
 [Path]
 PathModified=/var/lib/libvirt/dnsmasq/default.leases
+PathModified=/var/lib/libvirt/dnsmasq/isolate.leases
 
 [Install]
 WantedBy=paths.target

@@ -1,7 +1,7 @@
 [Unit]
 Description=Virtual Machine DNS Leases
 ConditionPathIsDirectory=/var/lib/libvirt/dnsmasq
-ConditionPathExists=/var/lib/libvirt/dnsmasq/default.leases
+ConditionPathExistsGlob=/var/lib/libvirt/dnsmasq/*.leases
 Requires=lease-process.path
 
 [Service]
