@@ -6,7 +6,7 @@
 #  (at your option) any later version.
 
 [Unit]
-Description=Automatic root login on %I
+Description=Getty on %I
 Documentation=man:agetty(8) man:systemd-getty-generator(8)
 Documentation=http://0pointer.de/blog/projects/serial-console.html
 After=systemd-user-sessions.service plymouth-quit-wait.service
@@ -25,7 +25,7 @@ ConditionPathExists=/dev/tty0
 
 [Service]
 # the VT is cleared by TTYVTDisallocate
-ExecStart=-/sbin/agetty --login-pause --autologin root %I
+ExecStart=-/sbin/agetty --noissue --noclear --autologin root %I 38400 linux 
 Type=idle
 Restart=always
 RestartSec=0
