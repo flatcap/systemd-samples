@@ -1,0 +1,9 @@
+[Unit]
+Description=SD card is mounted
+
+[Path]
+PathModified=/dev/mmcblk0
+
+[Install]
+WantedBy=paths.target
+

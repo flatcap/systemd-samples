@@ -1,0 +1,12 @@
+[Unit]
+Description=Create SD card Link
+Requires=card-mounted.path
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/flatcap/systemd/unsorted/card.service
+ExecStart=/home/flatcap/systemd/unsorted/card.service/card-mounted.sh
+
+[Install]
+WantedBy=default.target
+

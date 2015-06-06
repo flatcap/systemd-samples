@@ -1,13 +1,13 @@
 
-alias s='systemctl'
+alias s='systemctl --user'
 
-alias disable="systemctl disable"
-alias enable="systemctl enable"
-alias reload="systemctl daemon-reload"
-alias restart="systemctl restart"
-alias start="systemctl start"
-alias status="systemctl status"
-alias stop="systemctl stop"
+alias disable="systemctl --user disable"
+alias enable="systemctl --user enable"
+alias reload="systemctl --user daemon-reload"
+alias restart="systemctl --user restart"
+alias start="systemctl --user start"
+alias status="systemctl --user status"
+alias stop="systemctl --user stop"
 
-alias j="journalctl -e --no-pager"
+alias j="journalctl --user -e --no-pager | tail -30 | side"
 
