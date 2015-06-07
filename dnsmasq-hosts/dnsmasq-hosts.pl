@@ -29,7 +29,7 @@ sub generate
 
 		foreach my $row (@{$data}) {
 			# printf "%-18s%-12s%15s%30s # %s\n", $row->{'ip-address'}, $row->{'hostname'}, $row->{'hostname'} . '.vm', $row->{'hostname'} . '.vm.flatcap.org', $row->{'mac-address'};
-			printf "%-18s%-12s\n", $row->{'ip-address'}, $row->{'hostname'};
+			printf "%-18s%s.vm\n", $row->{'ip-address'}, $row->{'hostname'};
 		}
 	}
 	# printf "\n";
