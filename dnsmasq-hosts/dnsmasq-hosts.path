@@ -1,0 +1,15 @@
+[Unit]
+Description=Virtual Machine DNS Leases path
+After=libvirtd.service
+
+[Path]
+PathModified=/var/lib/libvirt/dnsmasq/virbr0.status
+PathModified=/var/lib/libvirt/dnsmasq/virbr1.status
+PathModified=/var/lib/libvirt/dnsmasq/virbr2.status
+PathModified=/var/lib/libvirt/dnsmasq/virbr3.status
+PathModified=/var/lib/libvirt/dnsmasq/virbr4.status
+
+[Install]
+WantedBy=paths.target
+Also=dnsmasq-hosts.service
+
