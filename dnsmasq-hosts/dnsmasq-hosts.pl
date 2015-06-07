@@ -10,7 +10,7 @@ our $VERSION = 0.1;
 
 sub generate
 {
-	my ($filename) = @_;
+	my ($results, $filename) = @_;
 
 	my $json_text = q{};
 	if (open FH, '<', $filename) {
@@ -22,21 +22,48 @@ sub generate
 	# Trim any whitespace
 	$json_text =~ s/^\s+|\s+$//g;
 
-	# printf "# DNS for VM hosts using DHCP\n";
 	if ($json_text ne q{}) {
 		my $json = JSON->new;
 		my $data = $json->decode ($json_text);
 
 		foreach my $row (@{$data}) {
-			# printf "%-18s%-12s%15s%30s # %s\n", $row->{'ip-address'}, $row->{'hostname'}, $row->{'hostname'} . '.vm', $row->{'hostname'} . '.vm.flatcap.org', $row->{'mac-address'};
-			printf "%-18s%s.vm\n", $row->{'ip-address'}, $row->{'hostname'};
+			if (!defined $row->{'hostname'}) {
+				next;
+			}
+			my $hostname = $row->{'hostname'};
+			if (defined ${$results}->{$hostname}) {
+				my $old_et = ${$results}->{$hostname}->{'expiry-time'};
+				my $new_et = $row->{'expiry-time'};
+				if ($old_et >= $new_et) {
+					next;
+				}
+			}
+
+			${$results}->{$row->{'hostname'}} = $row;
 		}
 	}
+
+	return;
+}
+
+sub main
+{
+	my $results = {};
+
+	foreach (@ARGV) {
+		generate (\$results, $_);
+	}
+
+	# printf "# DNS for VM hosts using DHCP\n";
+	foreach (sort keys %{$results}) {
+		my $row = $results->{$_};
+		# printf "%-18s%-12s%15s%30s # %s\n", $row->{'ip-address'}, $row->{'hostname'}, $row->{'hostname'} . '.vm', $row->{'hostname'} . '.vm.flatcap.org', $row->{'mac-address'};
+		printf "%-18s%s.vm\n", $row->{'ip-address'}, $row->{'hostname'};
+	}
 	# printf "\n";
+
+	return 0;
 }
 
-
-foreach (@ARGV) {
-	generate ($_);
-}
+exit main();
 
