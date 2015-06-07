@@ -1,14 +1,12 @@
 [Unit]
 Description=Virtual Machine DNS Leases
 ConditionPathIsDirectory=/var/lib/libvirt/dnsmasq
-ConditionPathExistsGlob=/var/lib/libvirt/dnsmasq/virbr*
 Requires=dnsmasq-hosts.path
 
 [Service]
 Type=oneshot
 WorkingDirectory=/var/lib/libvirt/dnsmasq
-ExecStart=/home/tmp5790/dnsmasq-hosts
-# ExecStart=/home/tmp5790/dnsmasq-hosts %n %p %i %f %c
+ExecStart=/var/lib/libvirt/dnsmasq/dnsmasq-hosts.sh
 
 [Install]
 WantedBy=default.target
