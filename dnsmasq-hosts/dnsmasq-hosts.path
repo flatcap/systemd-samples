@@ -1,6 +1,6 @@
 [Unit]
 Description=Virtual Machine DNS Leases path
-After=libvirtd.service
+# After=libvirtd.service
 
 [Path]
 PathModified=/var/lib/libvirt/dnsmasq/virbr0.status

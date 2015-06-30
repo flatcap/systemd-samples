@@ -18,6 +18,6 @@ cd "$DIR"
 
 for FILE in virbr*; do
 	./dnsmasq-hosts.pl "$FILE"
-done > hosts
+done | sort -u > hosts
 pkill -f -HUP dnsmasq
 
